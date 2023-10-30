@@ -28,4 +28,18 @@ public class DeliveryPartnerService {
         return "You have been successfully regsitered!!!";
 
     }
+     public DeliveryPartnerResponse DeliveryPartnerWithMostNoOfOrders() {
+        List<DeliveryPartner> list = deliveryPartnerRepository.findAll();
+        int maxSize = Integer.MIN_VALUE;
+        DeliveryPartner deliveryPartner = null;
+        for(DeliveryPartner p : list){
+            int size = p.getOrders().size();
+           if(size>maxSize){
+               maxSize = Math.max(maxSize,size);
+               deliveryPartner = p;
+           }
+        }
+        DeliveryPartnerResponse deliveryPartnerResponse = DeliveryPartnerTransformer.DeliveryPartnerToDeliveryPartnerResponse(deliveryPartner);
+        deliveryPartnerResponse.setTotalNoOfOrders(maxSize);
+        return deliveryPartnerResponse;
 }
