@@ -42,7 +42,4 @@ public class CustomerController {
     }
 
 
-    // get the customer with most number of orders
-
-    // get the female customer with least number of orders
 }
