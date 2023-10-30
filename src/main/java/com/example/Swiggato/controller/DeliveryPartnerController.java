@@ -29,6 +29,10 @@ public class DeliveryPartnerController {
     }
 
     // give delivery partner with highest number of deliveries
+     @GetMapping("/Delivery_part_With_Most_No_Of_Orders")
+    public DeliveryPartnerResponse DeliveryPartnerWithMostNoOfOrders(){
+        return deliveryPartnerService.DeliveryPartnerWithMostNoOfOrders();
+    }
 
     // send an email to all the partners who have done less than 10 deliveries.
 
